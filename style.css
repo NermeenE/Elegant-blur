@@ -1,0 +1,150 @@
+body {
+    background: rgba(240, 179, 171, 0.219);
+    margin:0;
+    color: rgb(68, 31, 31);
+    font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.showcase::after{ /* for the image of the food*/
+    content:'';
+    height:100vh;
+    width: 100%;
+    background-image: url(showcase.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display:block;
+    filter: blur(10px); /* to blur the food image line 17 and 18*/
+    -webkit-filter: blur(10px);
+    transition: all 1000ms;
+}
+
+.showcase:hover::after {  /* to make it not blur when you are on image*/
+    filter: blur(0px); 
+    -webkit-filter: blur(0px);
+}
+
+.showcase:hover .content{ /* to make the content which the logo with the wording blur when mouse isnt on it */
+    filter: blur(2px); 
+    -webkit-filter: blur(2px);
+}
+
+.content{
+position: absolute; /*to make the food image go over the logo */
+z-index:1 ; /*to make the logo appear throught the food image*/
+top:10%; /* line 30 to 35 to position logo center*/
+left: 50%;
+margin-top: 105px;
+margin-left: -145px;
+width: 300px;
+height:350;
+text-align: center; /* make the text under logo center */
+transition: all 1000ms;
+}
+
+.content .logo{ /* dont need to put .content before .logo/.title/.text but just to have it neater*/
+ height: 300px;
+ width:300px;
+margin-bottom: -3rem;
+}
+
+.content .title{
+ font-size: 2.2rem; /* rem unit 1rem=16 font size*/
+ 
+}
+
+.content .text{
+ line-height: 1.7;
+ margin-top: 1rem;
+}
+
+.container{ /* for services*/
+    max-width: 960px;
+    margin:auto;
+    overflow:hidden;
+    padding: 4rem 1rem;
+}
+
+.grid-3{
+    display: grid;
+    grid-gap:20px; /* to put spacing between each grid*/
+    grid-template-columns: repeat(3, 1fr) /* to split the services into 3 equal columns*/
+
+}
+
+.grid-2{
+    display: grid;
+    grid-gap:20px; /* to put spacing between each grid*/
+    grid-template-columns: repeat(2, 1fr) /* to split the about us and laptop into 2 equal columns*/
+
+}
+
+.center{
+    text-align: center;
+    margin:auto;
+}
+
+.bg-light{
+    background: rgba(248, 224, 193, 0.308);
+    color:rgb(68, 31, 31);
+}
+
+
+.bg-dark{
+    background: rgba(238, 196, 191, 0.219);
+    color: rgb(68, 31, 31);
+}
+
+footer{
+    padding: 2.2rem;
+
+}
+
+footer p{
+    margin:0;
+}
+
+/* Small screens */
+@media( max-width:560px) {
+    .showcase::after {
+        height: 50vh;
+    }
+
+    .content {
+        top: 5%;
+        margin-top: 5px;
+    }
+
+    .content .logo {
+        height: 160px;
+        width: 160px;
+
+    }
+
+    .content .text {
+        display: none;
+    }
+
+    .grid-3, .grid-2{  /* grid-3 and grid-2 are the ig and classes and about us, we changed the 1fr to be 1 column*/
+        grid-template-columns: 1fr;
+
+    }
+
+    .services div{
+        border-bottom: rgb(76, 102, 104) dashed 1px;
+        padding: 1.2rem 1rem;
+
+    }
+}
+
+/* landscape */
+@media (max-height: 500px){
+    .content .title, 
+    .content .text{
+        display: none;
+    }
+
+    .content{
+        top: 0;
+    }
+}
